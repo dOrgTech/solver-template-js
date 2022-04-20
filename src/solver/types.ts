@@ -68,6 +68,8 @@ interface InteractionData {
     call_data: Uint8Array
 }
 
+export type Tokens = Record<string, Token>
+
 export interface BatchAuctionModel {
     tokens: Record<string, Token>
     orders:  Record<string, Order>
@@ -84,5 +86,5 @@ export interface SettledBatchAuctionModel {
     amms: Record<number, UpdatedAmm>
     ref_token?: string
     prices: Record<string, string>
-    interaction_data: InteractionData[]
+    interaction_data?: InteractionData[]
 }

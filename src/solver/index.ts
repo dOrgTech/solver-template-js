@@ -1,8 +1,6 @@
 import { BatchAuctionModel, SettledBatchAuctionModel } from "./types";
-import simpleOrder from './simple-order.json'
+import simpleOrderOutput from '../../data/simple-order-solution.json'
 
 export function solve(orders: BatchAuctionModel): SettledBatchAuctionModel {
-    return {} as SettledBatchAuctionModel
+    return simpleOrderOutput
 }
-
-solve(simpleOrder)
