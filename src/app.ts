@@ -2,8 +2,6 @@ import express, { Application, json, Request, Response } from "express";
 import { solve } from "./solver";
 const app: Application = express();
 
-import simpleOrderInput from '../data/simple-order-input.json'
-
 const requestHeaders = (
     _: express.Request,
     response: express.Response,
@@ -25,7 +23,7 @@ app.get('/health', (_, response: Response) => {
 })
 
 app.post('/solve', (request: Request, response: Response) => {
-    const settledBatchAuction = solve(simpleOrderInput)
+    const settledBatchAuction = solve(request.body)
     response.status(200).json(settledBatchAuction)
 })
 

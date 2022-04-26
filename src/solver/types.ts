@@ -40,9 +40,12 @@ type AmmParameters = "ConstantProduct" | "WeightedProduct" | "Stable"
 
 interface Metadata {
     environment?: string
+    auction_id?: number
+    gas_price?: number
+    native_token?: string
 }
 
-interface ExecuteOrder {
+export interface ExecuteOrder {
     exec_sell_amount: string
     exec_buy_amount: string
 }
@@ -71,7 +74,7 @@ interface InteractionData {
 export type Tokens = Record<string, Token>
 
 export interface BatchAuctionModel {
-    tokens: Record<string, Token>
+    tokens: Tokens
     orders:  Record<string, Order>
     amms: Record<string, Amm>
     metadata?: Metadata
@@ -82,8 +85,8 @@ export interface BatchAuctionModel {
 }
 
 export interface SettledBatchAuctionModel {
-    orders: Record<number, ExecuteOrder>
-    amms: Record<number, UpdatedAmm>
+    orders: Record<string, ExecuteOrder>
+    amms: Record<string, UpdatedAmm>
     ref_token?: string
     prices: Record<string, string>
     interaction_data?: InteractionData[]
